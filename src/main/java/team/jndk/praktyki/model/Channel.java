@@ -4,7 +4,7 @@ package team.jndk.praktyki.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Chanel {
+public class Channel {
     private String id;
     private String name;
     private List<Video> videos = new ArrayList<>();
