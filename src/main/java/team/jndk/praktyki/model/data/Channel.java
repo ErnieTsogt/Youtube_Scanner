@@ -13,6 +13,7 @@ public class Channel {
     private String id;
     @NotBlank
     private String name;
+
     private final Set<Video> videos = new HashSet<>();
 }
 
