@@ -55,6 +55,8 @@
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
 
+                    <appendAssemblyId>false</appendAssemblyId>
+
                     <archive>
                         <manifest>
                             <mainClass>team.jndk.praktyki.Main</mainClass>
