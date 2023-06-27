@@ -1,16 +1,27 @@
 package team.jndk.praktyki;
 
 import lombok.extern.slf4j.Slf4j;
-import team.jndk.praktyki.model.exception.EmptyParamException;
-import team.jndk.praktyki.model.exception.NullParamException;
+
+import javax.validation.constraints.NotBlank;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 @Slf4j
 public class Main {
-    public static void main(String[] args) {
-        log.info("info message");
-        log.info("Hello World");
-        log.debug("test DEBUG");
-        log.error("test ERROR");
+    public static void main(@NotBlank String[] args) {
+        String propsFile = args[0];
+        Properties props = new Properties();
 
+        try (FileInputStream input = new FileInputStream(propsFile)) {
+            props.load(input);
+        } catch (IOException e) {
+            log.error("Failed to load properties file: " + e.getMessage());
+            return;
+        }
+
+        String channelId = props.getProperty("channel_id");
+        log.info("Channel ID: " + channelId);
     }
 
 
