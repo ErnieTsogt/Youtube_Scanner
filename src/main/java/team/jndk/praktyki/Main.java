@@ -16,7 +16,7 @@ public class Main {
         try (FileInputStream input = new FileInputStream(propsFile)) {
             props.load(input);
         } catch (IOException e) {
-            log.info("Failed to load properties file: " + e.getMessage());
+            log.error("Failed to load properties file: " + e.getMessage());
             return;
         }
 
