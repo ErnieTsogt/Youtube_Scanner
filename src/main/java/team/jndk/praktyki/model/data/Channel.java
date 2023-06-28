@@ -23,7 +23,7 @@ public class Channel {
         return "Channel{" +
                 "id='" + id + "'\n" +
                 ", videos=\n" + videos +
-                '}';
+                "} \n\n";
     }
 }
 
