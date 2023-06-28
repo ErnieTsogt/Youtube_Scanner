@@ -29,7 +29,7 @@ public class Video {
                 ", views=" + views + "'\n" +
                 ", likes=" + likes + "'\n" +
                 ", comments=" + comments + "'\n" +
-                ", scannedDate='" + scannedDate +
+                ", scannedDate='" + new Date(scannedDate).toGMTString() +
                 "}\n\n";
     }
 }

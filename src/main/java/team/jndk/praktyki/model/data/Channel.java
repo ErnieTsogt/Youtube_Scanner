@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ public class Channel {
     public String toString() {
         return "Channel{" +
                 "id='" + id + "'\n" +
-                ", videos=\n" + videos +
+                ", videos=\n" + videos.stream().sorted(Comparator.comparingLong(Video::getScannedDate)).toList() +
                 "} \n\n";
     }
 }

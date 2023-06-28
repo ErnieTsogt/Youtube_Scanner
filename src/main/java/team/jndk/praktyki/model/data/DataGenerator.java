@@ -3,6 +3,8 @@ package team.jndk.praktyki.model.data;
 import java.util.*;
 
 public class DataGenerator {
+
+    private static final long TWO_DAYS_MILLIS = 172800000;
     public static void main(String[] args) {
 
         int numChannels = 2;
@@ -37,7 +39,7 @@ public class DataGenerator {
             int i;
             String id1 = UUID.randomUUID().toString();
             String id2 = UUID.randomUUID().toString();
-            String videoTitle="";
+            String videoTitle = "";
             for (i = 1; i <= numVideos; i++) {
                 int randomNumber = random.nextInt(2);
                 String id;
@@ -60,21 +62,26 @@ public class DataGenerator {
                 } else {
                     id = id2; // Drugi kod UUID
                 }
+                Video previous = channel.getVideos()
+                        .stream()
+                        .filter(vid -> vid.getId().equals(id))
+                        .sorted(Comparator.comparingLong(Video::getScannedDate).reversed())
+                        .findFirst()
+                        .orElse(null);
+                int viewsLast = previous == null ? 1000 : previous.getViews();
+                int views = random.nextInt(viewsLast, viewsLast + 1000); // Random number of views
 
-                int views = random.nextInt(1000000) + 1000; // Random number of views
                 int likes = random.nextInt(5000) + 100; // Random number of likes
                 int comments = random.nextInt(500) + 50; // Random number of comments
-                long scannedDate = random.nextLong(10000000000000l); // Random scanned date
-                Date date =new Date(scannedDate);
-                Video video = new Video(videoTitle, id, views, likes, comments, date.toInstant().toEpochMilli());
+
+                int randomDays = random.nextInt(5);
+                long scannedDate = previous == null ? random.nextLong(System.currentTimeMillis() - randomDays * TWO_DAYS_MILLIS, System.currentTimeMillis())
+                        : random.nextLong(previous.getScannedDate(), System.currentTimeMillis()); // Random scanned date
+                Video video = new Video(videoTitle, id, views, likes, comments, scannedDate);
                 channel.addVideos(video);
-                channel.getVideos().;
             }
         }
     }
-
-
-
 
 
 }
