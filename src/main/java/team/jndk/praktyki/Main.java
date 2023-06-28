@@ -1,11 +1,16 @@
 package team.jndk.praktyki;
 
 import lombok.extern.slf4j.Slf4j;
+import team.jndk.praktyki.model.data.Channel;
+import team.jndk.praktyki.model.data.DataGenerator;
+import team.jndk.praktyki.model.data.Video;
 
 import javax.validation.constraints.NotBlank;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 @Slf4j
 public class Main {
@@ -22,6 +27,7 @@ public class Main {
 
         String channelId = props.getProperty("channel_id");
         log.info("Channel ID: " + channelId);
+
     }
 
 

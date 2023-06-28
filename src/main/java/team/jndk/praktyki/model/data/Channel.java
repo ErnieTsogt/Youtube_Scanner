@@ -10,9 +10,7 @@ import java.util.Set;
 @Data
 public class Channel {
     @NotBlank
-    private String id;
-    @NotBlank
-    private String name;
+    private final String id;
     private final Set<Video> videos = new HashSet<>();
 
     public void addVideo(Video video) {
