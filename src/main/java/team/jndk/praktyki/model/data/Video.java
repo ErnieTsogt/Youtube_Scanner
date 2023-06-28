@@ -20,4 +20,15 @@ public class Video {
     @NotBlank
     private final String scannedDate;
 
+    @Override
+    public String toString() {
+        return "Video{" +
+                "title='" + title + "'\n" +
+                ", id='" + id + "'\n" +
+                ", views=" + views + "'\n" +
+                ", likes=" + likes + "'\n" +
+                ", comments=" + comments + "'\n" +
+                ", scannedDate='" + scannedDate +
+                "}\n";
+    }
 }

@@ -1,20 +1,22 @@
 package team.jndk.praktyki.model.data;
 
-import javax.validation.constraints.Max;
 import java.util.*;
-import java.util.Scanner;
 
 public class DataGenerator {
     public static void main(String[] args) {
 
         int numChannels = 2;
 
-        List<Channel> channels = generateChannels(numChannels);
-        populateVideos(channels);
+        Channel channel = new Channel("id");
+        channel.addVideos(new Video("title", "id", 1, 1, 1, "1234"), new Video("title2", "id2", 2, 2, 2, "2345"));
+        System.out.println(channel);
+        System.exit(0);
+//        List<Channel> channels = generateChannels(numChannels);
+//        populateVideos(channels);
 
-        for (Channel channel : channels) {
-            printChannel(channel);
-        }
+//        for (Channel channel : channels) {
+//            printChannel(channel);
+//        }
 
 
     }
@@ -69,7 +71,7 @@ public class DataGenerator {
                 String scannedDate = generateRandomDate(); // Random scanned date
 
                 Video video = new Video(videoTitle, id, views, likes, comments, scannedDate);
-                channel.addVideo(video);
+                channel.addVideos(video);
             }
         }
     }
