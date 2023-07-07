@@ -74,7 +74,7 @@ public class DataGenerator {
                 int likes = random.nextInt(5000) + 100; // Random number of likes
                 int comments = random.nextInt(500) + 50; // Random number of comments
 
-                int randomDays = random.nextInt(5);
+                int randomDays = random.nextInt(1, 5);
                 long scannedDate = previous == null ? random.nextLong(System.currentTimeMillis() - randomDays * TWO_DAYS_MILLIS, System.currentTimeMillis())
                         : random.nextLong(previous.getScannedDate(), System.currentTimeMillis()); // Random scanned date
                 Video video = new Video(videoTitle, id, views, likes, comments, scannedDate);
