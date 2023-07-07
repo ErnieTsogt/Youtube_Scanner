@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NonNull;
 
 import javax.validation.constraints.*;
+import java.util.Date;
 
 @Data
 public class Video {
@@ -18,6 +19,17 @@ public class Video {
     @Min(0)
     private final int comments;
     @NotBlank
-    private final String scannedDate;
+    private final long scannedDate;
 
+    @Override
+    public String toString() {
+        return "Video{" +
+                "title='" + title + "'\n" +
+                ", id='" + id + "'\n" +
+                ", views=" + views + "'\n" +
+                ", likes=" + likes + "'\n" +
+                ", comments=" + comments + "'\n" +
+                ", scannedDate='" + new Date(scannedDate).toGMTString() +
+                "}\n\n";
+    }
 }
