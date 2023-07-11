@@ -2,11 +2,13 @@ package team.jndk.praktyki.model.data;
 
 import lombok.Data;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.*;
 import java.util.Date;
 
 @Data
+@RequiredArgsConstructor
 public class Video {
     @NotBlank
     private final String title;
@@ -20,6 +22,15 @@ public class Video {
     private final int comments;
     @NotBlank
     private final long scannedDate;
+
+    private Video() {
+        title = "";
+        id = "";
+        views = Integer.MIN_VALUE;
+        likes = Integer.MIN_VALUE;
+        comments = Integer.MIN_VALUE;
+        scannedDate = Long.MIN_VALUE;
+    }
 
     @Override
     public String toString() {

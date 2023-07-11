@@ -40,3 +40,6 @@ build/
 
 *.log
 ### nie wpisuje log do repozytorium ###
+
+testowy.json
+ChannelAndVideoData.json

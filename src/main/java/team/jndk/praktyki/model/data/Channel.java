@@ -2,6 +2,7 @@ package team.jndk.praktyki.model.data;
 
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Arrays;
@@ -10,10 +11,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
+@RequiredArgsConstructor
 public class Channel {
     @NotBlank
     private final String id;
     private final Set<Video> videos = new HashSet<>();
+
+    private Channel() {
+        id = "";
+    }
 
     public void addVideos(Video... videos) {
         this.videos.addAll(Arrays.asList(videos));
