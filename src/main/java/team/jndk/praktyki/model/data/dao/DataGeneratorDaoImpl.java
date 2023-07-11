@@ -22,7 +22,7 @@ public class DataGeneratorDaoImpl implements DataGeneratorDao {
     @Override
     public void saveChannels(List<Channel> channels) {
         try {
-            objectMapper.writeValue(dataFile, channels);
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(dataFile, channels);
         } catch (IOException e) {
             e.printStackTrace();
         }

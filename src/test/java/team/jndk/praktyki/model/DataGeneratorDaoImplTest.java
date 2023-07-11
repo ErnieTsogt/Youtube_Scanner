@@ -2,9 +2,11 @@ package team.jndk.praktyki.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import team.jndk.praktyki.model.data.Channel;
+import team.jndk.praktyki.model.data.DataGenerator;
+import team.jndk.praktyki.model.data.dao.DataGeneratorDao;
 import team.jndk.praktyki.model.data.dao.DataGeneratorDaoImpl;
 
 import java.io.File;
@@ -16,22 +18,13 @@ import static junit.framework.TestCase.assertEquals;
 
 public class DataGeneratorDaoImplTest {
     private static final String TEST_FILE_PATH = "testowy.json";
-    private ObjectMapper objectMapper;
-    private DataGeneratorDaoImpl dataSaver;
-
-    @BeforeEach
-    public void setUp() {
-        objectMapper = new ObjectMapper();
-        dataSaver = new DataGeneratorDaoImpl(TEST_FILE_PATH);
-    }
+    private ObjectMapper objectMapper = new ObjectMapper();
+    private DataGeneratorDao dataSaver = new DataGeneratorDaoImpl(TEST_FILE_PATH);
 
     @Test
     public void testSerializacja() throws IOException {
         // Przygotowanie danych testowych
-        List<Channel> channels = new ArrayList<>();
-        channels.add(new Channel("kanał1"));
-        channels.add(new Channel("kanał2"));
-        channels.add(new Channel("kanał3"));
+        List<Channel> channels = DataGenerator.generateChannels(3);
 
         // Serializacja kanałów
         dataSaver.saveChannels(channels);

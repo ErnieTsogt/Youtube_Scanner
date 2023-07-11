@@ -4,6 +4,8 @@ import org.junit.Test;
 import team.jndk.praktyki.model.data.Channel;
 import team.jndk.praktyki.model.data.Video;
 
+import java.util.HashSet;
+
 import static junit.framework.TestCase.assertEquals;
 
 public class ChannelTest {

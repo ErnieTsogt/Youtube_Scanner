@@ -12,7 +12,6 @@ public class DataGenerator {
         Channel channel = new Channel("id");
 //        channel.addVideos(new Video("title", "id", 1, 1, 1, 1234l), new Video("title2", "id2", 2, 2, 2, 2345l));
         List<Channel> channels = generateChannels(numChannels);
-        populateVideos(channels);
 
         System.out.println(channels);
         System.exit(0);
@@ -27,11 +26,11 @@ public class DataGenerator {
             Channel channel = new Channel(channelId);
             channels.add(channel);
         }
-
+        populateVideos(channels);
         return channels;
     }
 
-    public static void populateVideos(List<Channel> channels) {
+    private static void populateVideos(List<Channel> channels) {
         Random random = new Random();
 
         for (Channel channel : channels) {
