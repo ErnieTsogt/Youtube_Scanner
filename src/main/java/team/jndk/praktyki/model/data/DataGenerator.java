@@ -10,7 +10,6 @@ public class DataGenerator {
         int numChannels = 2;
 
         Channel channel = new Channel("id");
-//        channel.addVideos(new Video("title", "id", 1, 1, 1, 1234l), new Video("title2", "id2", 2, 2, 2, 2345l));
         List<Channel> channels = generateChannels(numChannels);
 
         System.out.println(channels);

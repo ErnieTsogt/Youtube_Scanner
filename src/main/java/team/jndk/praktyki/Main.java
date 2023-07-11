@@ -32,10 +32,10 @@ public class Main {
         }
         String DATA_FILE_PATH = prop.getProperty("DATA_FILE_PATH");
         DataGeneratorDao dataSaver = new DataGeneratorDaoImpl(DATA_FILE_PATH);
-        // Przygotowanie danych testowych
+
         List<Channel> channels = DataGenerator.generateChannels(Integer.parseInt(prop.getProperty("numChannels")));
 
-        // Serializacja kanałów
+
         dataSaver.saveChannels(channels);
     }
 
