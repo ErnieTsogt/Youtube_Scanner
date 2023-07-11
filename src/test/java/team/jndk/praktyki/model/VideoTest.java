@@ -13,7 +13,7 @@ public class VideoTest {
 
     public void testGettingAndSettingTitle() {
         String title = "title";
-        Video video = new Video(title, "Lekcja1", 20000, 20, 10, "10.02.2019");
+        Video video = new Video(title, "Lekcja1", 20000, 20, 10, 1231223123L);
         assertEquals(title, video.getTitle());
     }
 
@@ -21,14 +21,14 @@ public class VideoTest {
     @Ignore
     public void testTitleValues() {
         String title = null;
-        Video video = new Video(title, "Lekcja1", 20000, 20, 10, "10.02.2019");
+        Video video = new Video(title, "Lekcja1", 20000, 20, 10, 1231223123L);
     }
 
     @Test
 
     public void testIdValues() {
         String value = "";
-        Video video = new Video("JavaTutorial", value, 20000, 20, 10, "10.02.2019");
+        Video video = new Video("JavaTutorial", value, 20000, 20, 10, 1231223123L);
     }
 
 
@@ -36,14 +36,14 @@ public class VideoTest {
     @Ignore
     public void testViewsValueNegative() {
         int value = -8;
-        new Video("JavaTutorial", "Lekcja1", value, 20, 10, "10.02.2019");
+        new Video("JavaTutorial", "Lekcja1", value, 20, 10, 1231223123L);
     }
 
     @Test
 
     public void testViewsValueZero() {
         int value = 0;
-        Video video = new Video("JavaTutorial", "Lekcja1", value, 20, 10, "10.02.2019");
+        Video video = new Video("JavaTutorial", "Lekcja1", value, 20, 10, 1231223123L);
         assertEquals(value, video.getViews());
     }
 
@@ -51,7 +51,7 @@ public class VideoTest {
 
     public void testViewsValuePositive() {
         int value = 13;
-        Video video = new Video("JavaTutorial", "Lekcja1", value, 20, 10, "10.02.2019");
+        Video video = new Video("JavaTutorial", "Lekcja1", value, 20, 10, 1231223123L);
         assertEquals(value, video.getViews());
     }
 
@@ -59,13 +59,13 @@ public class VideoTest {
     @Ignore
     public void testLikesValueNegative() {
         int value = -8;
-        Video video = new Video("JavaTutorial", "Lekcja1", 20000, value, 10, "10.02.2019");
+        Video video = new Video("JavaTutorial", "Lekcja1", 20000, value, 10, 1231223123L);
     }
 
     @Test
     public void testLikesValueZero() {
         int value = 0;
-        Video video = new Video("JavaTutorial", "Lekcja1", 20000, value ,10, "10.02.2019");
+        Video video = new Video("JavaTutorial", "Lekcja1", 20000, value ,10, 1231223123L);
         assertEquals(value, video.getLikes());
     }
 
@@ -73,7 +73,7 @@ public class VideoTest {
 
     public void testLikesValuePositive() {
         int value = 13;
-        Video video = new Video("JavaTutorial", "Lekcja1", 20000, value, 10, "10.02.2019");
+        Video video = new Video("JavaTutorial", "Lekcja1", 20000, value, 10, 1231223123L);
         assertEquals(value, video.getLikes());
     }
 
@@ -81,14 +81,14 @@ public class VideoTest {
     @Ignore
     public void testCommentsValueNegative() {
         int value = -8;
-        Video video = new Video("JavaTutorial", "Lekcja1", 20000, 20, value, "10.02.2019");
+        Video video = new Video("JavaTutorial", "Lekcja1", 20000, 20, value, 1231223123L);
     }
 
     @Test
 
     public void testCommentsValueZero() {
         int value = 0;
-        Video video = new Video("JavaTutorial", "Lekcja1", 20000, 20, value, "10.02.2019");
+        Video video = new Video("JavaTutorial", "Lekcja1", 20000, 20, value, 1231223123L);
         assertEquals(value, video.getComments());
     }
 
@@ -96,14 +96,14 @@ public class VideoTest {
 
     public void testCommentsValuePositive() {
         int value = 13;
-        Video video = new Video("JavaTutorial", "Lekcja1", 20000, 20, value, "10.02.2019");
+        Video video = new Video("JavaTutorial", "Lekcja1", 20000, 20, value, 1231223123L);
         assertEquals(value, video.getComments());
     }
 
     @Test(expected = NullParamException.class)
     @Ignore
     public void testScannedDataValues() {
-        String value = "";
+        long value = 0;
         Video video = new Video("JavaTutorial", "Lekcja1", 20000, 20, 10, value);
     }
 }

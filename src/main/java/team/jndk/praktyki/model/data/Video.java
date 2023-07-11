@@ -7,6 +7,7 @@ import javax.validation.constraints.*;
 import java.util.Date;
 
 @Data
+
 public class Video {
     @NotBlank
     private final String title;
