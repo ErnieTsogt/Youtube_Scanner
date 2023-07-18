@@ -30,10 +30,10 @@ public class Main {
             log.error("Failed to load properties file: " + e.getMessage());
             return;
         }
-        String DATA_FILE_PATH = prop.getProperty("DATA_FILE_PATH");
+        String DATA_FILE_PATH = prop.getProperty("data_file_path");
         DataGeneratorDao dataSaver = new DataGeneratorDaoImpl(DATA_FILE_PATH);
 
-        List<Channel> channels = DataGenerator.generateChannels(Integer.parseInt(prop.getProperty("numChannels")));
+        List<Channel> channels = DataGenerator.generateChannels(Integer.parseInt(prop.getProperty("num_channels")));
 
 
         dataSaver.saveChannels(channels);

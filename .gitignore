@@ -4,6 +4,7 @@ target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
+.idea/misc.xml
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
@@ -40,6 +41,6 @@ build/
 
 *.log
 ### nie wpisuje log do repozytorium ###
-
+/src/main/resources/DB/ChannelDB
 testowy.json
 ChannelAndVideoData.json
