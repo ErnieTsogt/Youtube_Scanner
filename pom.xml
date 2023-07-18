@@ -15,6 +15,7 @@
         <flyway.url>jdbc:sqlite:/Users/mac/IdeaProjects/Praktyki/src/main/resources/DB/ChannelDB</flyway.url>
         <flyway.baselineOnMigrate>true</flyway.baselineOnMigrate>
         <flyway.locations>filesystem:src/main/resources/DB</flyway.locations>
+        <flyway.cleanDisabled>false</flyway.cleanDisabled>
     </properties>
     <dependencies>
         <dependency>
