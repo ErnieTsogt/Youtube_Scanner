@@ -40,6 +40,6 @@ build/
 
 *.log
 ### nie wpisuje log do repozytorium ###
-
+/src/main/resources/DB/ChannelDB
 testowy.json
 ChannelAndVideoData.json

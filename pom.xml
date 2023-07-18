@@ -12,10 +12,11 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
+        <flyway.url>jdbc:sqlite:/Users/mac/IdeaProjects/Praktyki/src/main/resources/DB/ChannelDB</flyway.url>
+        <flyway.baselineOnMigrate>true</flyway.baselineOnMigrate>
+        <flyway.locations>filesystem:src/main/resources/DB</flyway.locations>
     </properties>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -46,6 +47,16 @@
             <version>2.15.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.42.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>9.20.1</version>
+        </dependency>
 
     </dependencies>
     <build>
@@ -80,6 +91,17 @@
                     </execution>
                 </executions>
 
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>9.20.1</version>
+                <configuration>
+                    <url>${flyway.url}</url>
+                    <locations>
+                        <location>${flyway.locations}</location>
+                    </locations>
+                </configuration>
             </plugin>
         </plugins>
     </build>
