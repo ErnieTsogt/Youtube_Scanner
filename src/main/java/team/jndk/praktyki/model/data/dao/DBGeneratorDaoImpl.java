@@ -55,7 +55,7 @@ public class DBGeneratorDaoImpl implements DataGeneratorDao {
 
         try (Connection conn = DriverManager.getConnection(database_url);
              PreparedStatement stmt = conn.prepareStatement(
-                     "INSERT INTO Videos (title, GoogleVidID, views, likes, comments, scannedDate) VALUES (?, ?, ?, ?, ?, ?)"
+                     "INSERT INTO Videos (title, GoogleVidID, views, likes, comments, scannedDate, ChanID) VALUES (?, ?, ?, ?, ?, ?, ?)"
              )) {
 
             // Insert video data into the database
@@ -68,6 +68,7 @@ public class DBGeneratorDaoImpl implements DataGeneratorDao {
                     stmt.setInt(4, video.getLikes());
                     stmt.setInt(5, video.getComments());
                     stmt.setLong(6, video.getScannedDate());
+                    stmt.setInt(7, channel.getId());
                     stmt.executeUpdate();
                 }
             }
