@@ -12,7 +12,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <flyway.url>jdbc:sqlite:/Users/mac/IdeaProjects/Praktyki/src/main/resources/DB/ChannelDB</flyway.url>
+        <flyway.url>jdbc:sqlite:${project.basedir}/src/main/resources/DB/ChannelDB</flyway.url>
         <flyway.baselineOnMigrate>true</flyway.baselineOnMigrate>
         <flyway.locations>filesystem:src/main/resources/DB</flyway.locations>
         <flyway.cleanDisabled>false</flyway.cleanDisabled>
