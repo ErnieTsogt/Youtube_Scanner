@@ -41,13 +41,13 @@ public class DataGenerator {
             for (i = 1; i <= numVideos; i++) {
                 int randomNumber = random.nextInt(2);
                 String id;
-                if (channel.getId().equals("Channel 1")) {
+                if (channel.getGoogleId().equals("Channel 1")) {
                     if (i <= 3) {
                         videoTitle = "Tech";
                     } else {
                         videoTitle = "Kod";
                     }
-                } else if (channel.getId().equals("Channel 2")) {
+                } else if (channel.getGoogleId().equals("Channel 2")) {
                     if (i <= 3) {
                         videoTitle = "Java";
                     } else {
@@ -62,7 +62,7 @@ public class DataGenerator {
                 }
                 Video previous = channel.getVideos()
                         .stream()
-                        .filter(vid -> vid.getId().equals(id))
+                        .filter(vid -> vid.getGoogleId().equals(id))
                         .sorted(Comparator.comparingLong(Video::getScannedDate).reversed())
                         .findFirst()
                         .orElse(null);
