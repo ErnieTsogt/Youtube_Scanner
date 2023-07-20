@@ -1,7 +1,6 @@
 package team.jndk.praktyki.model.data;
 
 import lombok.Data;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.*;
@@ -10,10 +9,11 @@ import java.util.Date;
 @Data
 @RequiredArgsConstructor
 public class Video {
+    private int id;
     @NotBlank
     private final String title;
     @NotBlank
-    private final String id;
+    private final String googleId;
     @Min(0)
     private final int views;
     @Min(0)
@@ -25,7 +25,7 @@ public class Video {
 
     private Video() {
         title = "";
-        id = "";
+        googleId = "";
         views = Integer.MIN_VALUE;
         likes = Integer.MIN_VALUE;
         comments = Integer.MIN_VALUE;
@@ -36,7 +36,7 @@ public class Video {
     public String toString() {
         return "Video{" +
                 "title='" + title + "'\n" +
-                ", id='" + id + "'\n" +
+                ", id='" + googleId + "'\n" +
                 ", views=" + views + "'\n" +
                 ", likes=" + likes + "'\n" +
                 ", comments=" + comments + "'\n" +

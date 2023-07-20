@@ -1,5 +1,6 @@
 package team.jndk.praktyki.model.data.dao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import team.jndk.praktyki.model.data.Channel;
 

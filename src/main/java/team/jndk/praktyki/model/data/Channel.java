@@ -13,12 +13,13 @@ import java.util.Set;
 @Data
 @RequiredArgsConstructor
 public class Channel {
+    private int id;
     @NotBlank
-    private final String id;
+    private final String googleId;
     private final Set<Video> videos = new HashSet<>();
 
     private Channel() {
-        id = "";
+        googleId = "";
     }
 
     public void addVideos(Video... videos) {
@@ -29,6 +30,7 @@ public class Channel {
     public String toString() {
         return "Channel{" +
                 "id='" + id + "'\n" +
+                "googleId='" + googleId + "'\n" +
                 ", videos=\n" + videos.stream().sorted(Comparator.comparingLong(Video::getScannedDate)).toList() +
                 "} \n\n";
     }

@@ -2,7 +2,6 @@ package team.jndk.praktyki.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Before;
 import org.junit.Test;
 import team.jndk.praktyki.model.data.Channel;
 import team.jndk.praktyki.model.data.DataGenerator;
@@ -11,7 +10,6 @@ import team.jndk.praktyki.model.data.dao.DataGeneratorDaoImpl;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
@@ -30,7 +28,8 @@ public class DataGeneratorDaoImplTest {
         dataSaver.saveChannels(channels);
 
         // Wczytanie kanałów bezpośrednio z pliku JSON
-        List<Channel> loadedChannels = objectMapper.readValue(new File(TEST_FILE_PATH), new TypeReference<List<Channel>>() {});
+        List<Channel> loadedChannels = objectMapper.readValue(new File(TEST_FILE_PATH), new TypeReference<List<Channel>>() {
+        });
 
         // Sprawdzenie, czy wczytane kanały są zgodne z oryginalnymi danymi testowymi
         assertEquals(channels.size(), loadedChannels.size());
