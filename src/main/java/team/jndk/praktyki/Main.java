@@ -32,7 +32,6 @@ public class Main {
 
 
         dataSaver.saveChannels(channels);
-        dataSaver.saveVideos(channels);
     }
 
 

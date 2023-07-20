@@ -48,10 +48,10 @@ public class DBGeneratorDaoImpl implements DataGeneratorDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        saveVideos(channels);
     }
 
-    @Override
-    public void saveVideos(List<Channel> channels) {
+    private void saveVideos(List<Channel> channels) {
 
         try (Connection conn = DriverManager.getConnection(database_url);
              PreparedStatement stmt = conn.prepareStatement(
