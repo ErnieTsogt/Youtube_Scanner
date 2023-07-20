@@ -1,11 +1,9 @@
 package team.jndk.praktyki.model.data.dao;
 
 import team.jndk.praktyki.model.data.Channel;
-import team.jndk.praktyki.model.data.Video;
 
 import java.sql.*;
 import java.util.List;
-import java.util.Set;
 
 public class DBGeneratorDaoImpl implements DataGeneratorDao {
     private static String database_url;
@@ -24,24 +22,26 @@ public class DBGeneratorDaoImpl implements DataGeneratorDao {
              )) {
 
 
-            for (Channel channel : channels) {
+            channels.forEach(channel -> {
+                try {
+                    stmt.setString(1, channel.getGoogleId());
 
-                stmt.setString(1, channel.getGoogleId());
+                    int affectedRows = stmt.executeUpdate();
 
-                int affectedRows = stmt.executeUpdate();
-
-                if (affectedRows == 0) {
-                    throw new SQLException("Creating channel failed, no rows affected.");
-                }
-                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        channel.setId(generatedKeys.getInt(1));
+                    if (affectedRows == 0) {
+                        throw new SQLException("Creating channel failed, no rows affected.");
                     }
-                    else {
-                        throw new SQLException("Creating channel failed, no ID obtained.");
+                    try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                        if (generatedKeys.next()) {
+                            channel.setId(generatedKeys.getInt(1));
+                        } else {
+                            throw new SQLException("Creating channel failed, no ID obtained.");
+                        }
                     }
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
-            }
+            });
 
             System.out.println("Channels successfully saved to the database.");
 
@@ -59,9 +59,8 @@ public class DBGeneratorDaoImpl implements DataGeneratorDao {
              )) {
 
             // Insert video data into the database
-            for (Channel channel : channels) {
-                Set<Video> videos = channel.getVideos();
-                for (Video video : videos) {
+            channels.forEach(channel -> channel.getVideos().forEach(video -> {
+                try {
                     stmt.setString(1, video.getTitle());
                     stmt.setString(2, video.getGoogleId());
                     stmt.setInt(3, video.getViews());
@@ -70,13 +69,17 @@ public class DBGeneratorDaoImpl implements DataGeneratorDao {
                     stmt.setLong(6, video.getScannedDate());
                     stmt.setInt(7, channel.getId());
                     stmt.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
-            }
+            }));
 
             System.out.println("Videos successfully saved to the database.");
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 }
+
