@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface DataGeneratorDao {
     void saveChannels(List<Channel> channels);
+    void saveVideos(List<Channel> channels);
 }
